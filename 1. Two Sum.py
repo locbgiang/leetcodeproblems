@@ -14,18 +14,17 @@ def twoSum(nums, target):
     memory = {}
     answer = []
 
-    for i in range(0, len(nums)):
+    for i in range(0, len(nums)):                     # create a library of the array
         memory[i] = nums[i]
 
     for i in range(0, len(nums)):
-        value = memory.pop(i, -1)
+        value = memory.pop(i, -1)                     # pop the memory at i
         lookingFor = target - value
         if lookingFor in memory.values():
             for j in memory:
-                if memory[j] == lookingFor:
+                if memory[j] == lookingFor:         # look for number that add with the popped to get target
                     answer.append(i)
                     answer.append(j)
                     return answer
 
-answer = twoSum(nums, target)
-print(answer)
+print(twoSum(nums, target))
