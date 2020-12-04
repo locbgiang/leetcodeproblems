@@ -1,2 +1,2 @@
-# leetcodeproblems
-Solutions to leetcode problems in python3
+# Leetcode problems
+Solutions in python3 to problems found on Leetcode.com
