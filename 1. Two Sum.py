@@ -9,12 +9,12 @@ You can return the answer in any order.
 nums = [2, 7, 11, 15]
 target = 9
 
-# solution:
+# Solution:
 def twoSum(nums, target):
     memory = {}
     answer = []
 
-    for i in range(0, len(nums)):                     # create a library of the array
+    for i in range(0, len(nums)):                     # create a dictionary of the array
         memory[i] = nums[i]
 
     for i in range(0, len(nums)):
@@ -26,5 +26,5 @@ def twoSum(nums, target):
                     answer.append(i)
                     answer.append(j)
                     return answer
-
+# Solution
 print(twoSum(nums, target))
