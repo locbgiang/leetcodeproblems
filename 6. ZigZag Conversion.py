@@ -13,9 +13,10 @@ Input: s = "PAYPALISHIRING", numRows = 3
 Output: "PAHNAPLSIIGYIR"
 '''
 
-s = 'AB'
-numRows = 1
+s = 'PAYPALISHIRING'
+numRows = 3
 
+# Solution:
 def convert(s, numRows):
     memory = {}
     down = True
@@ -42,4 +43,5 @@ def convert(s, numRows):
     for key in memory:
         finalString += memory[key]        # combine all strings from memory into a single string
     return finalString
-convert(s, numRows)
+# Solution
+print(convert(s, numRows))
