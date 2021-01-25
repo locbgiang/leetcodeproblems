@@ -16,8 +16,17 @@ In this case, the max area of water (blue section) the container can contain is 
 def maxArea (height):
     left = 0
     right = len(height) - 1
-    print(left, right)
+    result = 0
+
+    while left < right:
+        area = (right - left) * min(height[left], height[right])     # area of current left and right
+        result = max(area, result)                                  # asign result to the higher of the two between current and new area
+        if height[left] < height[right]:                           # move left right if left is lower
+            left += 1
+        else:                                                       # move right left if right is lower
+            right -= 1
+    return result
 
 # Solution
 height = [1,8,6,2,5,4,8,3,7]
-maxArea(height)
+print(maxArea(height))
