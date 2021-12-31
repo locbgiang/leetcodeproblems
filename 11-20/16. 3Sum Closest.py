@@ -4,62 +4,31 @@ Return the sum of the three integers. You may assume that each input would have 
 
 Example 1:
 
-Input: nums = [-1,2,1,-4], target = 1
+Input: nums = [-1,2,1,-4] (sorted [-4, -1, 1, 2]), target = 1
 Output: 2
 Explanation: The sum that is closest to the target is 2. (-1 + 2 + 1 = 2).
 '''
 
 def threeSumClosest(nums, target):
-    '''if len(nums) < 3:
-        return []
     nums.sort()
-    for i in range(1, len(nums)-1):
-        left = 0
-        right = len(nums)-1
-        total = 0
-        distance = 0
-        answer = 0
-        while left < i and right > i:
-            total = nums[left] + nums[right] + nums[i]
-            if total > target:
-                right -= 1
-            elif total < target:
-                left += 1
-        
-        if total <= 0:
-            distance = target - total
-        else:
-            distance = total - target
-            
-        if answer == 0:
-            answer = total
-        if distance < answer:
-            answer = total
-    return answer
-    '''
-
-    '''
-    print(nums)
-    print(nums[left], nums[mid], nums[right])
-    print(total)
-    
-    nums.sort()
+    targetLeft = target
+    targetRight = target
     left = 0
-    mid = int((len(nums)-1)/2)
-    right = len(nums)-1
-    running = True
-    while running:
-        total = nums[left] + nums[mid] + nums[right]
-        if total == target:
-            return total
-        elif total < target:
-            mid += 1
-        elif total > target:
-            mid -= 1
-        print(total)
-    '''
-    print(nums)
-    nums.sort()
+    mid = 1
+    right = 2
+    sum = 0
+    while True:                                                # runs forever
+        for left in range(0, len(nums)-2):
+            for mid in range(left+1, len(nums)-1):
+                for right in range(mid+1, len(nums)):           # brute force 3 forloops 
+                    sum = nums[left] + nums[mid] + nums[right]  # sum for all numbers
+                    if sum == targetLeft:
+                        return targetLeft
+                    elif sum == targetRight:
+                        return targetRight
+        targetLeft -= 1                                         # if no match, move left and right 1 from target
+        targetRight += 1
+
 nums = [-1, 2, 1, -4]
 target = 1
 print(threeSumClosest(nums, target))
