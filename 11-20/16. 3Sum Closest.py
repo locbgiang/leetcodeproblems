@@ -13,9 +13,6 @@ def threeSumClosest(nums, target):
     nums.sort()
     targetLeft = target
     targetRight = target
-    left = 0
-    mid = 1
-    right = 2
     sum = 0
     while True:                                                # runs forever
         for left in range(0, len(nums)-2):
