@@ -23,5 +23,20 @@ third =  ListNode(5)
 first.next = second
 second.next = third
 
+fourth = ListNode(1)
+fifth = ListNode(3)
+sixth = ListNode(4)
+fourth.next = fifth
+fifth.next = sixth
 
-def mergeKLists ()
+seventh = ListNode(2)
+eighth = ListNode(6)
+seventh.next = eighth
+
+lists = [first, fourth, seventh]
+
+def mergeKLists (lists):
+  for i in lists:
+    print(i.val)
+
+mergeKLists(lists)

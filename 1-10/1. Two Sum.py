@@ -10,12 +10,13 @@ Output: [0,1]
 Output: Because nums[0] + nums[1] == 9, we return [0, 1].
 '''
 
+'''
 nums = [2, 7, 11, 15]
 target = 9
 
 # Solution:
 def twoSum(nums, target):
-    memory = {}
+    memory = {}        
     answer = []
 
     for i in range(0, len(nums)):                     # create a dictionary of the array
@@ -31,4 +32,23 @@ def twoSum(nums, target):
                     answer.append(j)
                     return answer
 # Solution
+print(twoSum(nums, target))
+'''
+
+import enum
+
+
+nums = [2, 7, 11, 15]
+target = 9
+
+def twoSum(nums, target):                       # this new way has O(n) coefficient 
+    memory = {} # val : index
+    for i, n in enumerate(nums):
+        find = target - n
+        if find in memory:                      # if find is in memory 
+            return [memory[find], i]            # return index of find
+        memory[nums[i]] = i                     # add value :  index to memory
+    return
+
+
 print(twoSum(nums, target))
