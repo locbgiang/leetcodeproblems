@@ -6,19 +6,22 @@ Output: ["((()))","(()())","(())()","()(())","()()()"]
 '''
 
 def generateParenthesis(n):
+    line = []
     output = []
-    open = '('
-    close = ')'
-    stri = ''
-    for i in range (0, n):
-        stri = stri + open
-        stri = stri + close
-    print(stri)
-n = 2
+    def backtrack(openN, closedN):
+        if openN == closedN == n:               # if open == closed == n then add to output
+            output.append("".join(line))
+        if openN < n:                           # if open < n then create a branch
+            line.append("(")
+            backtrack(openN + 1, closedN)
+            line.pop()
+        if closedN < openN:                     # if closed < open then create a branch
+            line.append(")")
+            backtrack(openN, closedN + 1)
+            line.pop()
+    backtrack(0, 0)
+    return output
+        
+        
+n = 4
 generateParenthesis(n)
-
-# open open open close close close
-# open open close open close close
-# open open close close open close
-# open close open open close close
-# open close open close open close
