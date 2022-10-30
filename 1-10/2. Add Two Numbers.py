@@ -30,6 +30,7 @@ l2 = ListNode(5)
 l2.set_next(ListNode(6))
 l2.get_next().set_next(ListNode(4))
 
+'''
 # Solution:
 def addTwoNumbers(l1, l2):
         firstNum = []
@@ -62,4 +63,25 @@ def addTwoNumbers(l1, l2):
             lastNode = lastNode.next
         return finalList
 # Solution
-print(addTwoNumbers(l1,l2))
+Input: l1 = [2,4,3], l2 = [5,6,4]
+Output: [7,0,8]
+Explanation: 342 + 465 = 807.
+'''
+def addTwoNumbers(l1, l2):
+    solution = ListNode()                   # create solution listnode
+    pointer = solution                      # pointer point to solution node
+    carry = 0
+    while l1 or l2 or carry:                # if list 1 or list 2 or carry exist, run while loop
+        v1 = l1.val if l1 else 0            # set v1 to l1 value if list 1 ended set v1 to 0
+        v2 = l2.val if l2 else 0            # same as v1
+
+        # compute new digit
+        val = v1 + v2 + carry               # add all together
+        carry = val // 10                   # set carry over
+        val = val % 10                      # set val at the first integer
+        pointer.next = ListNode(val)        # pointer.next set to val
+        pointer = pointer.next              # pointer set to pointer.next
+        l1 = l1.next if l1 else None        # move list to next
+        l2 = l2.next if l2 else None
+    return solution.next                    # return solution at start
+addTwoNumbers(l1,l2)
