@@ -6,16 +6,17 @@ Output: "100"
 '''
 
 def addBinary(a, b):
-    num_a = int(a)
-    num_b = int(b)
-    bin_a = bin(num_a)
-    bin_b = bin(num_b)
-    print(bin_a)
-    print(bin_b)
-    print(bin_a + bin_b)
-    print(bin(12),2)
-    
+    res = ''
+    carry = 0
 
+    a, b = a[::-1], b[::-1]
+
+    for i in range(max(len(a), len(b))):
+        digitA = ord(a[i]) - ord(a["0"]) if i < len(a) else 0
+        digitB = ord(b[i]) - ord(b["0"]) if i < len(b) else 0
+        total = digitA + digitB + carry
+        char = total % 2
+        
 
 a = '11'
 b = '1'

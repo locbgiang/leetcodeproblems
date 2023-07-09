@@ -44,16 +44,17 @@ def mergeKLists (lists):
       i = i.next              # go next link list 
   tempList.sort()       # sort
   
-  if tempList:
-    head = ListNode(tempList[0])
-    current = head
-    for value in tempList[1:]:
-      new_node = ListNode(value)
-      current.next = new_node
-      current = current.next
-    return head
+  # now we just need to create a merged linked-list
+  if tempList:            # if templist exist
+      head = ListNode(tempList[0])    # set head of list to return
+      current = head                  # current pointer is head
+      for value in tempList[1:]:      # a for loop starting from postion 1
+          new_node = ListNode(value)  # create a new node with value from current position
+          current.next = new_node     # the current pointer .next is the newly create node
+          current = current.next      # move the current pointer 1 over
+      return head
   else:
-    return None
+      return None         # templist dont exist meaning we did not get input return None
     
 
 
