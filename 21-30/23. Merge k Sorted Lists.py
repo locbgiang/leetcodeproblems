@@ -13,6 +13,7 @@ Explanation: The linked-lists are:
 merging them into one sorted list:
 1->1->2->3->4->4->5->6
 '''
+
 class ListNode:
     def __init__(self, val = 0, next=None):
         self.val = val
@@ -36,7 +37,24 @@ seventh.next = eighth
 lists = [first, fourth, seventh]
 
 def mergeKLists (lists):
-  for i in lists:
-    print(i.val)
+  tempList = []         # create a temporary array
+  for i in lists:       # break down the list of list
+    while i:            # going through each list
+      tempList.append(i.val)  # adding value of linked list
+      i = i.next              # go next link list 
+  tempList.sort()       # sort
+  
+  if tempList:
+    head = ListNode(tempList[0])
+    current = head
+    for value in tempList[1:]:
+      new_node = ListNode(value)
+      current.next = new_node
+      current = current.next
+    return head
+  else:
+    return None
+    
+
 
 mergeKLists(lists)
