@@ -27,16 +27,35 @@ fourth.next = fifth
 
 def reverseKGroup(head, k):
     counter = 1
-    current = head
+    current = head      # point at the head
 
-    tempList = []
-    while current:
-        tempList.append(current.val)
-        if counter == k:
-            print(tempList)
-        current = current.next
-        counter += 1
+    tempList = []       # temporary list of k length, used to reverse
+    finalList = []      # this list will be turned into a linked list
 
-    return
+    while current:      # while current pointer is not none
+        tempList.append(current.val)    # append the value into templist
+        if counter == k:                # check if counter is equal to k
+            # if counter is equal to k we just reverse whatever in the list and add it to our final list
+            tempList.reverse()          
+            finalList.extend(tempList)  # using extend we add only the values and not the entire list like append
+            tempList = []               # reset the temp list
+            counter = 0                 # reset counter
+        current = current.next          # move pointer
+        counter += 1                    # count up
+    # after the while loop we add whatever remains from temp list into final list 
+    finalList.extend(tempList)
+
+    # Now we just need to create a new linked list using our final list
+    if finalList:            # if finallist exist
+      head = ListNode(finalList[0])    # set head of list to return
+      current = head                  # current pointer is head
+      for value in finalList[1:]:      # a for loop starting from postion 1
+          new_node = ListNode(value)  # create a new node with value from current position
+          current.next = new_node     # the current pointer .next is the newly create node
+          current = current.next      # move the current pointer 1 over
+      return head
+    else:
+        return None         # finallist doesnt exist meaning we did not get input return None
+
 
 reverseKGroup(first, 2)
