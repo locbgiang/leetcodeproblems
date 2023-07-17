@@ -14,7 +14,7 @@ Example 2:
 '''
 
 def strStr(haystack, needle):
-    # get endpoint for forloop since there is no point looping pass the end point
+    # get endpoint for forloop since there is no point looping pass the end point as there are not enough letters left in haystack to make needle
     end = len(haystack) - len(needle) + 1
     # we will for loop through haystack one letter at a time 
     for position in range(0, end):
