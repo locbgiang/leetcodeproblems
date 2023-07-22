@@ -30,8 +30,8 @@ def searchRange(nums, target):
                 right = mid
         return left
 
-    left = search(target)
-    right = search(target+1) - 1
+    left = search(target)               # search left most value of target
+    right = search(target+1) - 1        # search the left most value of target+1, then - 1
     
     if left <= right:
         return [left, right]
