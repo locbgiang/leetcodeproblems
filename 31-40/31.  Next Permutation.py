@@ -23,51 +23,6 @@ Output: [1,2,3]
 Input: nums = [1,1,5]
 Output: [1,5,1]
 '''
-
-'''
-def nextPermutation(nums):
-    head = nums[0]
-    cut = nums[1:]
-
-    def isDescending(list):
-        reverseList = sorted(list, reverse=True)
-        if list == reverseList:
-            return True
-        else:
-            return False
-    def switch(cut):
-        answer = []
-        answer.append(cut[1])
-        answer.append(cut[0])
-        return answer
-
-    def changeHead(head, cut):
-        cut.insert(0, head)
-        head = cut[len(cut)-1]
-        cut.pop()
-        cut.sort()
-        answer = []
-        answer.append(head)
-        answer.extend(cut)
-        return answer
-
-    if isDescending(cut):
-        answer = changeHead(head, cut)
-        return answer
-    elif len(cut) == 2:
-        cut = switch(cut)
-        answer = []
-        answer.append(head)
-        answer.extend(cut)
-        return answer
-    else:
-        cut = nextPermutation(cut)
-        answer = []
-        answer.append(head)
-        answer.extend(cut) 
-        return answer
-    return
-'''
 def nextPermutation(nums):
     # recursion 
 
@@ -117,9 +72,6 @@ def nextPermutation(nums):
             return
         
         
-
-    
-
 nums = [2,2,7,5,4,3,2,2,1]
 nextPermutation(nums)
 print(nums)
