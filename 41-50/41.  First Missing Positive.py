@@ -18,3 +18,11 @@ Input: nums = [7,8,9,11,12]
 Output: 1
 Explanation: The smallest positive integer 1 is missing.
 '''
+def firstMissingPositive(nums):
+    u = set(nums)
+    i = 1
+    while i in u:
+        i += 1
+    return i
+nums = [1,2,0]
+print(firstMissingPositive(nums))
