@@ -12,53 +12,6 @@ example 2:
 Input: height = [4,2,0,3,2,5]
 Output: 9
 '''
-'''
-def trap(height):
-    left, right = 0, 1
-    waterTotal = 0
-    while left < len(height)-1:
-        leftHeight = height[left]
-        rightHeight = height[right]
-        if leftHeight == 0:
-            left += 1
-            right = left + 1
-            continue
-
-        if rightHeight >= leftHeight:
-            for i in height[left+1:right]:
-                waterTotal += min(leftHeight, rightHeight) - i
-            left = right
-        
-        right += 1
-        if right == len(height):
-            left += 1
-            right = left + 1
-    return waterTotal
-'''
-'''
-def trap(height):
-    mid = 1
-    answer = 0
-    while mid < len(height)-1:
-        midHeight = height[mid]
-        left = mid-1
-        right = mid+1
-        leftHeight = height[left]
-        rightHeight = height[right]
-
-        if midHeight < leftHeight and midHeight < rightHeight:
-            while left > 0 and height[left-1] > leftHeight:
-                leftHeight = height[left-1] 
-                left -= 1
-            while right < len(height)-1 and rightHeight < height[right+1]:
-                rightHeight = height[right+1]
-                right += 1
-            for i in height[left+1:right]:
-                answer += min(rightHeight, leftHeight) - i
-            mid = right
-        mid += 1
-    return answer
-'''
 def trap(height):
     answer = 0          # total water
     tallest_index = height.index(max(height))       # find tallest index
@@ -77,6 +30,7 @@ def trap(height):
         answer += pillar - height[i]
 
     return answer
+
 
 
 height1 = [0,1,0,2,1,0,1,3,2,1,2,1]
