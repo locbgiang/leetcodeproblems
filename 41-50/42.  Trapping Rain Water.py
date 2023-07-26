@@ -12,6 +12,8 @@ example 2:
 Input: height = [4,2,0,3,2,5]
 Output: 9
 '''
+
+# cut the height array in half at the highest index, run two for-loops to add up trapped water.
 def trap(height):
     answer = 0          # total water
     tallest_index = height.index(max(height))       # find tallest index
