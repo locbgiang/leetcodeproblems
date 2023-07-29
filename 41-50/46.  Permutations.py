@@ -15,8 +15,7 @@ Output: [[1]]
 '''
 def permute(nums):
     if len(nums) == 2:
-        newArr = nums[:]
-        return newArr, newArr[::-1]
+        return nums[:], nums[::-1]
     elif len(nums) == 1:
         return [nums]
     

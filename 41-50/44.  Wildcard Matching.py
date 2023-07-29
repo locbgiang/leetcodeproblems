@@ -66,6 +66,8 @@ def isMatch(s, p):
         elif s[0] == p[0] or p[0] == '?':
             # if s[0] and p[0] are the same, move both forward 
             return isMatch(s[1:], p[1:])
+        else:
+            return False
     elif not s and p:
         # call starPath to handle no s but p
         return starPath(s, p)
@@ -74,7 +76,7 @@ def isMatch(s, p):
 
 
 s = "aa"
-p = "a"
+p = "ab"
 print(isMatch(s, p))
         
 
