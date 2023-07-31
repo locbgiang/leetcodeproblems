@@ -12,59 +12,42 @@ Input: n = 1
 Output: [["Q"]]
 '''
 
-from turtle import right
-
-
 def solveNQueens(n):
-    def checkValid(row, col): 
-        if 'Q' in board[row]:
-            return False
-        for i in range(row):
-            if board[i][col]=='Q':
-                return False
-
-            leftDiagonal = col - (i + 1)
-            rightDiagonal = col + (i + 1)
-            if leftDiagonal >= 0:
-                if board[row-(i+1)][leftDiagonal]=='Q':
-                    return False
-            if rightDiagonal < len(board):
-                if board[row-(i+1)][rightDiagonal]=='Q':
-                    return False
-        return True
-
-    def solver(col):
-        strArr = []
-        for x in range(n):
-            if x == col:
-                board[0][x] = 'Q'
-        strArr.append("".join(board[0]))
-        queenCount = 1
-
-        for i in range(1, n):
-            for j in range(0, n):
-                if checkValid(i, j):
-                    board[i][j] = 'Q'
-                    queenCount += 1
-            strArr.append("".join(board[i]))
-        if queenCount == n:
-            return strArr
-        else:
-            return False
-
     answer = []
+    column = set()
+    diagonalPos = set() # col - row
+    diagonalNeg = set() # row + col
+
     board = [['.']*n for i in range(n)]
-    for y in range(n):
-        x = solver(y)
-        if x:
-            answer.append(x)
-        board = [['.']*n for i in range(n)]
+
+    def callback(row):
+        if row == n:
+            copy = ["".join(row) for row in board]
+            answer.append(copy)
+            return 
+
+        for col in range(n):
+            if col in column or (row+col) in diagonalNeg or (col-row) in diagonalPos:
+                continue
+            board[row][col] = 'Q'
+            column.add(col)
+            diagonalNeg.add(col+row)
+            diagonalPos.add(col-row)
+            callback(row+1)
+
+            column.remove(col)
+            diagonalNeg.remove(col+row)
+            diagonalPos.remove(col-row)
+            board[row][col] = '.'
+        print('here', board)
+    
+    callback(0)
     print(answer)
-    return answer
+    print(board)
+    return answer 
 
-n = 5
+n = 3
 solveNQueens(n)
-
 
 
 '''
