@@ -35,9 +35,6 @@ def twoSum(nums, target):
 print(twoSum(nums, target))
 '''
 
-import enum
-
-
 nums = [2, 7, 11, 15]
 target = 9
 
