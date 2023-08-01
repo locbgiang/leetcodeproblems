@@ -29,7 +29,6 @@ def permuteUnique(nums):
         for body in bodies:
             if [head]+body not in answer:
                 answer.append([head]+body)
-    print(answer)
     return answer
 
 

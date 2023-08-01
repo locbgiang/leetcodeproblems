@@ -31,14 +31,13 @@ def rotate(matrix):
     first, last = 0, len(matrix) - 1
     while first < last:
         for i in range(first, last):
-            temp = matrix[first][first+i]
-            matrix[first][first+i] = matrix[last-i][first]
-            matrix[last-i][first] = matrix[last][last-i]
-            matrix[last][last-i] = matrix[first+i][last]
-            matrix[first+i][last] = temp
+            temp = matrix[first][first+i]                   # save top left
+            matrix[first][first+i] = matrix[last-i][first]  # top left = bot left
+            matrix[last-i][first] = matrix[last][last-i]    # bot left = bot right
+            matrix[last][last-i] = matrix[first+i][last]    # bot right = top right
+            matrix[first+i][last] = temp                    # top right = saved top left
         first += 1
         last -= 1
-    print(matrix)
     return
     
 

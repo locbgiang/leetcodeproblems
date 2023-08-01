@@ -21,13 +21,13 @@ Output: [["a"]]
 def groupAnagrams(strs):
     mem = {}
     for str in strs:
-        arr = list(str)
-        arr.sort()
-        if "".join(arr) not in mem:
-            mem["".join(arr)] = [str]
+        arr = list(str)                 # turn str into list
+        arr.sort()                      # sort list
+        if "".join(arr) not in mem:         # check if the string of list is in memory
+            mem["".join(arr)] = [str]       # if it is not in memory, save to memory
         else:
-            mem["".join(arr)] += [str]
-    return [i for i in mem.values()]
+            mem["".join(arr)] += [str]      # otherwise add the string to the string already existing in memory
+    return [i for i in mem.values()]        # loop through memory and return all the values
     
 
 

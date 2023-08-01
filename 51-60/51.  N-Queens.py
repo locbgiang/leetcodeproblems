@@ -14,6 +14,7 @@ Output: [["Q"]]
 
 def solveNQueens(n):
     answer = []
+    # create 3 sets to keep track queens, queens can not be in the same column and diagonal.
     column = set()
     diagonalPos = set() # col - row
     diagonalNeg = set() # row + col
@@ -26,17 +27,17 @@ def solveNQueens(n):
             answer.append(copy)
             return 
 
-        for col in range(n):
-            if col in column or (row+col) in diagonalNeg or (col-row) in diagonalPos:
+        for col in range(n):                # loop through the row
+            if col in column or (row+col) in diagonalNeg or (col-row) in diagonalPos:       # if position is invalid move on
                 continue
-            board[row][col] = 'Q'
-            column.add(col)
-            diagonalNeg.add(col+row)
+            board[row][col] = 'Q'           # try queen
+            column.add(col)                 # add queen col 
+            diagonalNeg.add(col+row)        # add diagonal
             diagonalPos.add(col-row)
-            callback(row+1)
+            callback(row+1)                 # move on to next row
 
-            board[row][col] = '.'
-            column.remove(col)
+            board[row][col] = '.'           # after that try '.'
+            column.remove(col)              # remove added set
             diagonalNeg.remove(col+row)
             diagonalPos.remove(col-row)
 

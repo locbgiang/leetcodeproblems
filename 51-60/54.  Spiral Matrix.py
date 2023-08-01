@@ -13,23 +13,26 @@ Output: [1,2,3,4,8,12,11,10,9,5,6,7]
 def spiralOrder(matrix):
     answer = []
     while matrix:
+        # left to right
         answer += matrix.pop(0)
         if not matrix:
             break
 
-
+        # top to bot
         for i in matrix:
             answer += [i.pop()]
-            if not i and i == matrix[-1]:
+            if not matrix[-1]:      # if last sub arr is empty return answer
                 return answer
 
+        # right to left
         answer += matrix.pop()[::-1]
         if not matrix:
             break
 
+        # bot to top
         for i in matrix[::-1]:
             answer += [i.pop(0)]
-            if not i and i == matrix[0]:
+            if not matrix[0]:       # if first sub arr is empty return answer
                 return answer
 
     return answer

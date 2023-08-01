@@ -21,11 +21,11 @@ def permute(nums):
     
     answer = []
     for i in range(len(nums)):
-        head = nums.pop(i)
-        bodies = permute(nums)
-        nums.insert(i, head)
-        for body in bodies:
-            answer.append([head]+body)
+        head = nums.pop(i)          # pop head out
+        bodies = permute(nums)      # recursion call with body until length of body == 2
+        nums.insert(i, head)        # add head back in
+        for body in bodies:         
+            answer.append([head]+body)          # add head to new bodies, then append to answer
 
     return answer
 

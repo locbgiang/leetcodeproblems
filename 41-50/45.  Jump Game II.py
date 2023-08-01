@@ -15,10 +15,11 @@ Input: nums = [2,3,0,1,4]
 Output: 2
 '''
 
+# break the array into smaller arrays
+# using farthest to find the farthest jump, set that as right, left is simply old right + 1
 def jump(nums):
     left, right, answer = 0, 0 ,0
-    print(len(nums)-1)
-    while right < len(nums) - 1:
+    while right < len(nums) - 1:    
         farthest = 0
         for i in range(left, right+1):
             if i+nums[i] > farthest:
