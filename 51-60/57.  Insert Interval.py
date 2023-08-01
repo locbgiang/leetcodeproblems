@@ -19,25 +19,25 @@ Explanation: Because the new interval [4,8] overlaps with [3,5],[6,7],[8,10].
 '''
 
 # for loop through intervals
-# if cur interval connects with newiterval
-# add in newiterval
-# else move id up
+# if cur interval end point is less than new start
+# append current interval to answer
+# else if cur interval start point is greater than end point of newInterval
+# append newInterval 
+# set newInterval as cur interval
+# otherwise set the min and max of newInterval 
 def insert(intervals, newInterval):
-    id = 0
+    answer = []
     for i in intervals:
         if i[1] < newInterval[0]:
-            id += 1
+            answer.append(i)
         elif i[0] > newInterval[1]:
-            intervals[id] = newInterval
+            answer.append(newInterval)
             newInterval = i
-            id += 1
         else:
             newInterval[0] =  min(i[0], newInterval[0])
             newInterval[1] = max(i[1], newInterval[1])
-    intervals[id] = newInterval
-    id += 1
-    print(intervals[:id])
-    return 
+    answer.append(newInterval)
+    return answer
 
 
 intervals = [[1,2],[3,5],[6,7],[8,10],[12,16]]
