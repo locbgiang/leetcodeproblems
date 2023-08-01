@@ -35,51 +35,14 @@ def solveNQueens(n):
             diagonalPos.add(col-row)
             callback(row+1)
 
+            board[row][col] = '.'
             column.remove(col)
             diagonalNeg.remove(col+row)
             diagonalPos.remove(col-row)
-            board[row][col] = '.'
-        print('here', board)
+
     
     callback(0)
-    print(answer)
-    print(board)
     return answer 
 
 n = 3
 solveNQueens(n)
-
-
-'''
-    for row in range(len(board)):
-        for col in range(len(board[row])):
-            if checkValid(row, col, queenCount):
-                board[row][col] = 'Q'
-            else:
-                board[row][col] = '.'
-
-    def solver(row, col, queenCount):
-        if row == n:
-            if queenCount == n:
-                return True
-            else:
-                return False
-        if col == n:
-            return solver(row+1, 0, queenCount)
-
-        option = ['Q', '.']
-        for i in option:
-            if i == 'Q':
-                if checkValid(row, col):
-                    board[row][col] = 'Q'
-                    if solver(row, col+1, queenCount+1):
-                        return True
-                    else: 
-                        board[row][col] = '.'
-                        return solver(row, col+1, queenCount)
-                else:
-                    board[row][col] == '.'
-                    return solver(row, col+1, queenCount)
-            else:
-                return solver(row, col+1, queenCount)
-    '''
