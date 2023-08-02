@@ -33,7 +33,7 @@ n = 4,  k = 9
 1423    2413    3412    4312
 1432    2431    3421    4321
 
-note that there are 24 choices total.  first number changes every n!//len(nums) = 4!//4 = 24//4 = 6 = (n-1)!
+note that there are 24 choices total.  first number changes every n!//len(nums) = 4!//4 = 24//4 = 6 or (n-1)!
 given k = 9-1 = 8 since our index starts at 0 and not 1
 we can find that the first number is 2
 k//(n-1)! = 8//6 = 1
