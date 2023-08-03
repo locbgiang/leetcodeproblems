@@ -21,20 +21,25 @@ Explanation: From the top-left corner, there are a total of 3 ways to reach the 
 example: 
 m = 3, n = 7
 
+let ?s represent the number of paths the robot can take towards "end"
+[start] [?] [?] [?] [?] [?] [?]
+    [?] [?] [?] [?] [?] [?] [?]
+    [?] [?] [?] [?] [?] [?] [end] 
+
+when the robot is at right most column there is only one path to end: down
+same thing when the robot is at the bottom row, it can only go right
 [start] [?] [?] [?] [?] [?] [1]
     [?] [?] [?] [?] [?] [?] [1]
     [1] [1] [1] [1] [1] [1] [end] 
-when the robot is at right most column there is only one path to end
-same thing with bottom most row
 
-we can see that the position top left of end has two different path to end
+we can see that the position top left of end has two different paths to end
 this is because the robot can go right or down.  mathematically, we can say that bottom + right = current
 [start] [?] [?] [?] [?] [?] [1]
     [?] [?] [?] [?] [?] [2] [1]
     [1] [1] [1] [1] [1] [1] [end] 
 
-the position to the left of 2 has 3 different unique paths toward end, going down, going right and then right or down
-we can see that 2 + 1 = 3
+the position to the left of 2 has 3 different unique paths toward end, going down or going right, which will have two paths
+1(down) + 2(right) = 3
 [start] [?] [?] [?] [?] [?] [1]
     [?] [?] [?] [?] [3] [2] [1]
     [1] [1] [1] [1] [1] [1] [end] 
@@ -45,14 +50,15 @@ repeating this process we can find the number of paths the start position will h
 
 
 def uniquePaths(m, n):
-    row = [1]*n
-
-    for i in range(m-1):    
-        newRow = [1]*n
-        for j in range(n-2, -1, -1):
-            newRow[j] = newRow[j+1] + row[j]
-        row = newRow
-    print(row)
+    row = [1]*n                 # this represent the bottomn row
+    for i in range(m-1):        # repeating for however many rows there are above the bottom row
+        newRow = [1]*n          # this is the row above the bottom row
+        for j in range(n-2, -1, -1):    # starting from 2nd to last column, we will go backward 
+            newRow[j] = newRow[j+1] + row[j]        # the number of paths we can take at the current 
+            # number of paths at current position = paths of right + paths of bottom
+        row = newRow            # move the bottom row up
+    # currently row represents the top row, we can return the first value to find the number of paths at start
+    return row[0]
 
 
 m = 3
