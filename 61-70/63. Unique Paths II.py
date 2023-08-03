@@ -35,11 +35,3 @@ def uniquePathsWithObstacles(obstacleGrid):
 
 obstacleGrid = [[0,0,0],[0,1,0],[0,0,0]]
 uniquePathsWithObstacles(obstacleGrid)
-
-'''
-[
-    [0,0,0,0,0],
-    [0,0,0,0,1],
-    [0,0,0,1,0],
-    [0,0,1,0,0]]
-'''
