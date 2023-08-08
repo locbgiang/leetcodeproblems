@@ -12,33 +12,20 @@ Incrementing by one gives 123 + 1 = 124.
 Thus, the result should be [1,2,4].
 '''
 
-'''
 def plusOne(digits):
-    digit = int("".join(map(str,digits)))
-    digit += 1
-    output = []
-    for d in str(digit):
-        output.append(d)
-    return output
-'''    
-
-def plusOne(digits):
-    digits = digits[::-1]                   # reverse list
-    one, i = 1, 0                           # one is to keep track of remainder, i is pointer
-    while one:                          # while there is remainder
-        if i < len(digits):                # counter is less than length of list
-            if digits[i] == 9:             # digit at counter is 9
-                digits[i] = 0               # set it to 0
-            else:                       # else add 1 to number at counter and remove remainder
-                digits[i] += 1
-                one = 0
-        else:                       # add 1 to list at the end of list (case: 99 = 100)
-            digits.append(1)
-            one = 0
-        i += 1                  # move counter up
-    return digits[::-1]
+    last_index = len(digits)-1
+    while last_index > -1:
+        if digits[last_index] + 1 < 10:
+            digits[last_index] += 1
+            return digits
+        else:
+            digits[last_index] = 0
+            last_index -= 1
+            if last_index == -1:
+                digits.insert(0,1)
+                return digits
+    return digits
 
 
-
-digits = [1,2,3]
+digits = [9]
 plusOne(digits)
