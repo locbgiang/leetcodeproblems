@@ -6,19 +6,30 @@ Output: "100"
 '''
 
 def addBinary(a, b):
-    res = ''
+    answer = ''
     carry = 0
-
     a, b = a[::-1], b[::-1]
 
     for i in range(max(len(a), len(b))):
-        digitA = ord(a[i]) - ord(a["0"]) if i < len(a) else 0
-        digitB = ord(b[i]) - ord(b["0"]) if i < len(b) else 0
-        total = digitA + digitB + carry
-        char = total % 2
-        
+        if i < len(a):
+            digitA = int(a[i])
+        else:
+            digitA = 0
 
-a = '11'
-b = '1'
+        if i < len(b):
+            digitB = int(b[i])
+        else:
+            digitB = 0
+        
+        total = digitA + digitB + carry
+        carry = total // 2
+        total = total % 2
+        answer = str(total) + answer
+    if carry > 0:
+        answer = str(carry) + answer
+    return answer
+
+a = '1111'
+b = '1111'
 
 addBinary(a, b)
