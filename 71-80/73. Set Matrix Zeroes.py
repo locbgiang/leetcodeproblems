@@ -26,8 +26,7 @@ def setZeroes(matrix):
                 matrix[row][col] = 0
             if col in col_mem:
                 matrix[row][col] = 0
-    print(matrix)
-    return 
+    return matrix
 
 
 matrix = [[1,1,1],[1,0,1],[1,1,1]]
