@@ -35,7 +35,6 @@ def sortColors(nums):
         else:
             nums[i] = 2
             blue -= 1
-    print(nums)
     return
 
 nums = [2,0,2,1,1,0]
