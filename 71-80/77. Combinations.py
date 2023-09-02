@@ -16,12 +16,11 @@ Explanation: There is 1 choose 1 = 1 total combination.
 
 def combine(n, k):
     answer = []
-
-    def backtrack(cur, combine):
+    def backtrack(start, combine):
         if len(combine) == k:
-            answer.append(combine.copy())
-        
-        for i in range(cur, n+1):
+            answer.append(list(combine))
+            return
+        for i in range(start, n+1):
             combine.append(i)
             backtrack(i+1, combine)
             combine.pop()
@@ -29,5 +28,5 @@ def combine(n, k):
     return answer
 
 n = 4
-k = 3
+k = 2
 print(combine(n, k))
