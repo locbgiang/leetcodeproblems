@@ -15,37 +15,34 @@ Example 3:
 Input: board = [["A","B","C","E"],["S","F","C","S"],["A","D","E","E"]], word = "ABCB"
 Output: false
 '''
-
 def exist(board, word):
-    def backtrack(row, col, counter, path):
-        if board[row][col] == word[counter] and counter == len(word)-1:
+    def dfs(row, col, counter):
+        if counter == len(word):
             return True
-        path.append([row, col])
-        print(path)
-        counter += 1
-        if col > 0 and board[row][col-1] == word[counter] and [row,col-1] not in path:
-            if backtrack(row, col-1, counter, path):
-                return True
-        if col < len(board[0])-1 and board[row][col+1] == word[counter] and [row,col+1] not in path:
-            if backtrack(row, col+1, counter, path):
-                return True
-        if row > 0 and board[row-1][col] == word[counter] and [row-1,col] not in path:
-            if backtrack(row-1, col, counter, path):
-                return True
-        if row < len(board)-1 and board[row+1][col] == word[counter] and [row+1,col] not in path:
-            if backtrack(row+1, col, counter, path):
-                return True
-        path.pop()
-        return False
+        elif (row < 0) or (col<0) or (row >= m) or (col >= n) or (board[row][col] != word[counter]):
+            return False
 
-    for row in range(len(board)):
-        for col in range(len(board[0])):
+        save, board[row][col] = board[row][col], 'used'
+        if dfs(row+1, col, counter+1) or dfs(row-1, col, counter+1) or dfs(row, col-1, counter+1) or dfs(row, col+1, counter+1):
+            return True
+        else:
+            board[row][col] = save
+            return False
+    m, n = len(board), len(board[0])
+    for row in range(m):
+        for col in range(n):
             if board[row][col] == word[0]:
-                if backtrack(row, col, 0, []):
+                if dfs(row, col, 0):
                     return True
-            
     return False
+'''
+[   ["A","B","C","E"],
+    ["S","F","E","S"],
+    ["A","D","E","E"]]
+    "ABCESEEEFS"
 
-board = [["A","B","C","E"],["S","F","E","S"],["A","D","E","E"]]
-word = "ABCESEEEFS"
+'''
+
+board = [["A","B","C","E"],["S","F","C","S"],["A","D","E","E"]]
+word = "ABCCED"
 print(exist(board, word))
