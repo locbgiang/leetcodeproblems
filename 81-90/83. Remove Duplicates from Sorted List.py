@@ -39,11 +39,7 @@ def deleteDuplicates(head):
             prev.next = cur
         else:
             prev = prev.next
-    
-    while answer:
-        print(answer.val)
-        answer = answer.next
-    return
+    return answer
 
 head = [1, 1, 2]
 deleteDuplicates(first)
