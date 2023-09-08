@@ -21,9 +21,12 @@ def largestRectangleArea(heights):
             index, height = stack.pop()
             maxArea = max(maxArea, height * (i-index))
             start = index
-        stack.append((start, h))
+        stack.append([start, h])
     for i, h in stack:
-        maxArea = max(maxArea, h * (len(heights)-i))
+        maxArea = max(maxArea, h*(len(heights) - i))
     return maxArea
-heights = [2,1,5,6,2,3]
+
+
+
+heights = [1,2]
 largestRectangleArea(heights)
