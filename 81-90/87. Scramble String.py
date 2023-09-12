@@ -29,19 +29,31 @@ Input: s1 = "a", s2 = "a"
 Output: true
 '''
 def isScramble(s1, s2):
-    if len(s1) != len(s2):
-        return False
-    if s1 == s2:
-        return True
-    
-    for i in range(1, len(s1)):
-        if (
-            isScramble(s1[:i], s2[:i]) and isScramble(s1[i:],s2[i:])    # cut from front
-        ) or (
-            isScramble(s1[i:],s2[:-i]) and isScramble(s1[:i], s2[-i:])  # cut from front s1 and cut from back s2
-        ): return True
-    return False
+    mem = {}
+    def callback(s1, s2):
+        print(s1, s2)
+        if s1 == s2:
+            return True
+        if (s1, s2) in mem:
+            return mem[(s1, s2)]
+        if not sorted(s1) == sorted(s2):
+            return False
+        if len(s1) == 1:
+            return True
 
-s1 = "great"
-s2 = "rgeat"
+        for i in range(1, len(s1)):
+            if (
+                callback(s1[:i], s2[:i]) and callback(s1[i:],s2[i:])    # cut from front
+            ) or (
+                callback(s1[:i], s2[-i:]) and callback(s1[i:],s2[:-i])  # cut from front s1 and cut from back s2
+            ): 
+                mem[(s1, s2)] = True
+                return True
+        mem[(s1, s2)] = False
+        return False
+    answer = callback(s1,s2)
+    return answer
+
+s1 = "ccabcbabcbabbbbcbb"
+s2 = "bbbbabccccbbbabcba"
 print(isScramble(s1, s2))
