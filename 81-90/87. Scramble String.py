@@ -54,6 +54,6 @@ def isScramble(s1, s2):
     answer = callback(s1,s2)
     return answer
 
-s1 = "ccabcbabcbabbbbcbb"
-s2 = "bbbbabccccbbbabcba"
+s1 = "abcde"
+s2 = "caebd"
 print(isScramble(s1, s2))
