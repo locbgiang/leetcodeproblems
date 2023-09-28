@@ -17,19 +17,16 @@ Input: strs = ["a"]
 Output: [["a"]]
 '''
 
-
 def groupAnagrams(strs):
     mem = {}
-    for str in strs:
-        arr = list(str)                 # turn str into list
-        arr.sort()                      # sort list
-        if "".join(arr) not in mem:         # check if the string of list is in memory
-            mem["".join(arr)] = [str]       # if it is not in memory, save to memory
+    for i in strs:
+        cut = list(i)
+        cut.sort()
+        if "".join(cut) in mem:
+            mem["".join(cut)] += [i] 
         else:
-            mem["".join(arr)] += [str]      # otherwise add the string to the string already existing in memory
-    return [i for i in mem.values()]        # loop through memory and return all the values
-    
-
+            mem.setdefault("".join(cut), [i])
+    return [i for i in mem.values()]
 
 strs = ["eat","tea","tan","ate","nat","bat"]
 groupAnagrams(strs)
