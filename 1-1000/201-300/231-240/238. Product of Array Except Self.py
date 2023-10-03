@@ -1,7 +1,7 @@
 '''
 Given an integer array nums, return an array answer such that answer[i] is equal to the product of all the elements of nums except nums[i].
 The product of any prefix or suffix of nums is guaranteed to fit in a 32-bit integer.
-You must write an algorithm that runs in O(n) time and without using the division operation.\
+You must write an algorithm that runs in O(n) time and without using the division operation.\          
 
 Example 1:
 Input: nums = [1,2,3,4]
@@ -18,11 +18,10 @@ def productExceptSelf(nums):
         answer[i] = prefix
         prefix *= nums[i]
     postfix = 1
-    for i in range(len(nums) - 1, -1, -1):
-        answer[i] *= postfix
+    for i in range(len(nums)-1, -1, -1):
+        answer[i] = postfix * answer[i]
         postfix *= nums[i]
-    print(answer)
-    return
+    return answer
 
 nums = [1,2,3,4]
 productExceptSelf(nums)
