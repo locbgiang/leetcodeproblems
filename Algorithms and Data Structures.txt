@@ -18,8 +18,8 @@ x    42. Trapping Rain Water
 Stack
 x    20. Valid Parentheses
 x    155. Min Stack
-    150. Evaluate Reverse Polish Notation
-    22. Generate Parentheses
+x    150. Evaluate Reverse Polish Notation
+x    22. Generate Parentheses
     739. Daily Temperatures
     853. Car Fleet
     84. Largest Rectangle in Histogram
