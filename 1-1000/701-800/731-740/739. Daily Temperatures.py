@@ -19,12 +19,11 @@ Output: [1,1,0]
 def dailyTemperatures(temperatures):
     answer = [0] * len(temperatures)
     stack = []
-    for i, t in enumerate(temperatures):
-        while stack and t > stack[-1][0]:
-            tempi = stack.pop()
-            answer[tempi] = i - tempi
-        stack.append([t,i])
-    print(answer)
+    for day, temp in enumerate(temperatures):
+        while stack and temp > stack[-1][1]:
+            cur = stack.pop()
+            answer[cur[0]] = day - cur[0]
+        stack.append([day, temp])
     return answer
 
 temperatures = [73,74,75,71,69,72,76,73]
