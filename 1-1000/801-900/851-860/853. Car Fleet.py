@@ -31,13 +31,15 @@ The cars starting at 0 (speed 4) and 2 (speed 2) become a fleet, meeting each ot
 Then, the fleet (speed 2) and the car starting at 4 (speed 1) become one fleet, meeting each other at 6. The fleet moves at speed 1 until it reaches target.
 '''
 def carFleet(target, position, speed):
-    pair = [[p, s] for p, s in zip(position, speed)]
+    pair = [[pos, spe] for pos, spe in zip(position, speed)]
     stack = []
     for p, s in sorted(pair)[::-1]:
-        stack.append((target-p) / s)
+        stack.append((target-p)/ s)
         if len(stack) >= 2 and stack[-1] <= stack[-2]:
             stack.pop()
     return len(stack)
+
+
 
 target = 12
 position = [10, 8, 0, 5, 3]
