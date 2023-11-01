@@ -25,8 +25,8 @@ x    853. Car Fleet
 x    84. Largest Rectangle in Histogram
 
 Binary Search
-    704. Binary Search
-    74. Search a 2D Matrix
+x    704. Binary Search
+x    74. Search a 2D Matrix
     875. Koko Eating Bananas
     153. Find Minimum in Rotated Sorted Array
     33. Search in Rotated Sorted Array
