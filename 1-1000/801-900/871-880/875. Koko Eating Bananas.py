@@ -19,23 +19,13 @@ Output: 23
 '''
 import math
 def minEatingSpeed(piles, h):
-    left, right = 1, max(piles)
-    answer = right
-
-    while left <= right:
-        mid = (left+right) // 2
-        hours = 0
-        for i in piles:
-            hours += math.ceil(i / mid)
-
-        if hours <= h:
-            answer = min(answer, mid)
-            right = mid - 1
-        else:
-            left = mid + 1
-
-    return answer
-
+    def eatTime(speed, piles):
+        time = 0
+        for pile in piles:
+            time += (pile//speed) + 1
+        return time
+    left, right = 1, piles[-1]
+    print(left, right)
 
 
 piles = [3,6,7,11]
