@@ -17,17 +17,23 @@ Example 3:
 Input: piles = [30,11,23,4,20], h = 6
 Output: 23
 '''
-import math
 def minEatingSpeed(piles, h):
-    def eatTime(speed, piles):
+    def eatTime(speed):
         time = 0
         for pile in piles:
-            time += (pile//speed) + 1
+            time += ((pile-1)//speed) + 1
+        print('speed ', speed, 'time ', time)
         return time
-    left, right = 1, piles[-1]
-    print(left, right)
+    left, right = 1, max(piles)
+    while left < right:
+        mid = (right+left)//2
+        if eatTime(mid) > h:
+            left = mid + 1
+        else:
+            right = mid
+    return left
 
 
-piles = [3,6,7,11]
-h = 8
+piles = [30,11,23,4,20]
+h = 6
 minEatingSpeed(piles, h)
