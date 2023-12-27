@@ -22,7 +22,6 @@ def minEatingSpeed(piles, h):
         time = 0
         for pile in piles:
             time += ((pile-1)//speed) + 1
-        print('speed ', speed, 'time ', time)
         return time
     left, right = 1, max(piles)
     while left < right:
