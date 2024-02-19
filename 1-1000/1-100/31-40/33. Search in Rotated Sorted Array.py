@@ -21,33 +21,29 @@ Example 3:
 Input: nums = [1], target = 0
 Output: -1
 '''
-
 def search(nums, target):
-    # typical binary search except we need to pay attention to the left and right tree since they have pivot
-    left, right = 0, len(nums) - 1
+    left, right = 0, len(nums)-1
+
     while left <= right:
-        mid = (left+right) // 2
+        mid = (left+right)//2
+
         if nums[mid] == target:
             return mid
-        elif nums[mid] >= nums[left]:                       # this means nums[mid] is on the left tree
-            if target > nums[mid] or target < nums[left]:   
-                # (target > nums[mid]) means there are more of the left tree, move left pointer to mid
-                # (target < nums[left]) means the target is on the right tree, since mid is on the left tree the entire right tree is to the right
-                left = mid + 1
-            else:
-                # otherwise, (target < nums[mid]) must be true, move right pointer to mid
-                right = mid - 1
-        else:                       # (nums[mid] < nums[right]) must be true, we are on the right tree
-            if target < nums[mid] or target > nums[right]:
-                # (target < nums[mid]) means that there are smaller number on the right tree
-                # (target > nums[right]) means the left tree contains more number
-                right = mid - 1
-            else:
-                # (target < nums[left]) otherwise must be true, target is on the right tree
-                left = mid + 1
-    return -1
-            
 
-nums = [4,5,0,1,2,3] 
-target = 0
+        if nums[left] <= nums[mid]:         # check if left half is sorted
+            if nums[left] <= target <= nums[mid]:   # if left half is sorted AND target in in left half 
+                right = mid - 1                     # move right pointer to mid
+            else:                           # if left half is sorted BUT target not in left half
+                left = mid + 1              # move left pointer to mid
+        else:
+            if nums[mid] <= target <= nums[right]:
+                left = mid + 1
+            else:
+                right = mid - 1
+
+    return -1
+
+# [5,6,7,0,1,2,3,4]
+nums = [5,6,7,0,1,2,3,4]
+target = 6
 print(search(nums, target))

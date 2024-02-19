@@ -28,7 +28,7 @@ Binary Search
 x    704. Binary Search
 x    74. Search a 2D Matrix
 x    875. Koko Eating Bananas
-    153. Find Minimum in Rotated Sorted Array
+x    153. Find Minimum in Rotated Sorted Array
     33. Search in Rotated Sorted Array
     981. Time Based Key-Value Store
     4. Median of Two Sorted Arrays
