@@ -31,10 +31,10 @@ x    875. Koko Eating Bananas
 x    153. Find Minimum in Rotated Sorted Array
 x    33. Search in Rotated Sorted Array
     981. Time Based Key-Value Store
-    4. Median of Two Sorted Arrays
+x    4. Median of Two Sorted Arrays
 
 Sliding Window
-    121. Best Time to Buy and Sell Stock
+x    121. Best Time to Buy and Sell Stock
     424. Longest Repeating Character Replacement
     567. Permutation in String
     3. Longest Substring Without Repeating Characters

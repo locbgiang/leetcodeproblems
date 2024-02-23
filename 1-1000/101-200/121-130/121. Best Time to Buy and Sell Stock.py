@@ -17,11 +17,11 @@ Explanation: In this case, no transactions are done and the max profit = 0.
 
 def maxProfit(prices):
     answer, buy = 0, prices[0]
-    for cur in prices:
-        if cur - buy > answer:
-            answer = cur - buy
-        if cur < buy:
-            buy = cur
+    for cur in prices:              # loop through prices
+        if cur - buy > answer:      # if profit is greater than current profit 
+            answer = cur - buy          # set new profit
+        if cur < buy:               # if found better buy in entry
+            buy = cur                   # set new buy in
     return answer
 
 prices = [7,1,5,3,6,4]
