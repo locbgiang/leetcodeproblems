@@ -17,21 +17,22 @@ There may exists other ways to achieve this answer too.
 '''
 def characterReplacement(s, k):
     answer = 0
-    count = 0
+    max_count = 0
     mem = {}
+    # put letters in memory
+    # find out which is the highest count
 
+    
     left = 0
     for right in range(len(s)):
         mem[s[right]] = mem.get(s[right], 0) + 1
-        count = max(count, mem[s[right]])
-        replacement = (right - left + 1) - count
-        print('count ', count, 'replacement ', replacement)
-        if replacement > k:
+        max_count = max(max_count, mem[s[right]])
+        replacements_needed = (right - left + 1) - max_count
+        if replacements_needed > k:
             mem[s[left]] -= 1
             left += 1
-
         answer = max(answer, right - left + 1)
-    print(answer)
+    print(mem)
 
 s = "AABABBA"
 k = 1
