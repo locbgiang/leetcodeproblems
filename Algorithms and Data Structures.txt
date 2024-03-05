@@ -35,7 +35,7 @@ x    4. Median of Two Sorted Arrays
 
 Sliding Window
 x    121. Best Time to Buy and Sell Stock
-    424. Longest Repeating Character Replacement
+x    424. Longest Repeating Character Replacement
     567. Permutation in String
     3. Longest Substring Without Repeating Characters
     76. Minimum Window Substring
