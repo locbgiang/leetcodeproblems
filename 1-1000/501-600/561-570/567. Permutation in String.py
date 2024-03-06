@@ -12,31 +12,34 @@ Input: s1 = "ab", s2 = "eidboaoo"
 Output: false
 '''
 def checkInclusion(s1, s2):
-    len_s1, len_s2 = len(s1), len(s2)
+    s1Len, s2Len = len(s1), len(s2)
 
-    if len_s1 > len_s2:
+    if s1Len > s2Len:
         return False
 
-    char_count_s1 = [0] * 26
-    char_count_s2 = [0] * 26
+    # creates two 26 sized arrays, filled with 0s
+    s1Count = [0] * 26
+    s2Count = [0] * 26
 
-    # Initialize char_count_s1 and char_count_s2 for the first window
-    for i in range(len_s1):
-        char_count_s1[ord(s1[i]) - ord('a')] += 1
-        char_count_s2[ord(s2[i]) - ord('a')] += 1
-
-    for i in range(len_s2 - len_s1):
-        # Check if the current window is a permutation of s1
-        if char_count_s1 == char_count_s2:
+    # count the letters in size s1Len window, 'a' goes in 0, 'b' goes in 1 ect.
+    for i in range(s1Len):
+        s1Count[ord(s1[i]) - ord('a')] += 1
+        s2Count[ord(s2[i]) - ord('a')] += 1
+    
+    #  move the window on s2,
+    for i in range(s2Len - s1Len):
+        
+        # if the two sCount arrays are equal, return True
+        if s1Count == s2Count:
             return True
 
-        # Move the window by updating char_count_s2
-        char_count_s2[ord(s2[i]) - ord('a')] -= 1
-        char_count_s2[ord(s2[i + len_s1]) - ord('a')] += 1
-
-    # Check the last window
-    return char_count_s1 == char_count_s2
+        # delete left letter, add in next letter
+        s2Count[ord(s2[i]) - ord('a')] -= 1
+        s2Count[ord(s2[i+s1Len]) - ord('a')] += 1
     
-s1 = 'ab'
-s2 = 'eidbaooo'
-checkInclusion(s1, s2)
+    return s1Count == s2Count
+
+    
+s1 = 'adc'
+s2 = 'dcda'
+print(checkInclusion(s1, s2))
